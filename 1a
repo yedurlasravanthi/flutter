@@ -1,0 +1,166 @@
+MAIN 1b
+
+// Dart: Full Basics to Advanced Concepts in One Program
+
+// SECTION 1: Entry Point - main function
+void main() {
+  print("=== Welcome to Dart Language Basics ===\n");
+
+  // SECTION 2: Variables & Data Types
+  int age = 25;
+  double height = 5.9;
+  String name = "Alice";
+  bool isStudent = true;
+
+  print("Name: $name, Age: $age, Height: $height, Student: $isStudent\n");
+
+  // SECTION 3: Final and Const
+  final currentYear = DateTime.now().year;
+  const pi = 3.1415;
+
+  print("Current Year: $currentYear");
+  print("Value of Pi (const): $pi\n");
+
+  // SECTION 4: Control Flow - if, else, else if
+  if (age > 18) {
+    print("$name is an adult.");
+  } else {
+    print("$name is a minor.");
+  }
+
+  // SECTION 5: Loops - for, while, do-while
+  print("\n--- For Loop ---");
+  for (int i = 1; i <= 5; i++) {
+    print("Count: $i");
+  }
+
+  print("\n--- While Loop ---");
+  int x = 1;
+  while (x <= 3) {
+    print("While loop x = $x");
+    x++;
+  }
+
+  print("\n--- Do-While Loop ---");
+  int y = 1;
+  do {
+    print("Do-while y = $y");
+    y++;
+  } while (y <= 2);
+
+  // SECTION 6: Functions
+  print("\n--- Functions ---");
+  int sum = add(10, 20);
+  print("Sum of 10 and 20 is: $sum");
+
+  // SECTION 7: Optional and Named Parameters
+  print("\n--- Optional & Named Parameters ---");
+  greetUser("Bob");
+  greetUser("Charlie", age: 30);
+
+  // SECTION 8: List and Set
+  print("\n--- List & Set ---");
+  List<String> fruits = ["Apple", "Banana", "Mango"];
+  fruits.add("Orange");
+  print("Fruits: $fruits");
+
+  Set<int> numbers = {1, 2, 2, 3}; // Sets store unique elements
+  print("Unique numbers (Set): $numbers");
+
+  // SECTION 9: Map
+  print("\n--- Map ---");
+  Map<String, dynamic> student = {
+    'name': "Alice",
+    'age': 25,
+    'grade': "A"
+  };
+  print("Student Info: $student");
+  print("Student Name: ${student['name']}");
+
+  // SECTION 10: Null Safety
+  print("\n--- Null Safety ---");
+  String? nullableStr;
+  nullableStr = "Now assigned!";
+  print("Nullable String: $nullableStr");
+
+  // SECTION 11: Classes and Objects
+  print("\n--- Classes & Objects ---");
+  Person person = Person("David", 22);
+  person.sayHello();
+
+  // SECTION 12: Inheritance
+  print("\n--- Inheritance ---");
+  Student studentObj = Student("Emily", 20, "Computer Science");
+  studentObj.sayHello();
+
+  // SECTION 13: Enums
+  print("\n--- Enums ---");
+  print("Day today is: ${Day.Monday}");
+  checkDay(Day.Sunday);
+
+  // SECTION 14: Exception Handling
+  print("\n--- Exception Handling ---");
+  try {
+    int result = divide(10, 0);
+    print("Division Result: $result");
+  } catch (e) {
+    print("Caught an exception: $e");
+  } finally {
+    print("Finally block executed.");
+  }
+}
+
+// Function to add two numbers
+int add(int a, int b) {
+  return a + b;
+}
+
+// Function with optional named parameters
+void greetUser(String name, {int age = 18}) {
+  print("Hello $name, Age: $age");
+}
+
+// Class Example
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
+
+  void sayHello() {
+    print("Hi, I'm $name and I'm $age years old.");
+  }
+}
+
+// Inheritance Example
+class Student extends Person {
+  String major;
+
+  Student(String name, int age, this.major) : super(name, age);
+
+  @override
+  void sayHello() {
+    super.sayHello();
+    print("I'm studying $major.");
+  }
+}
+
+// Enum Example
+enum Day { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday }
+
+void checkDay(Day day) {
+  if (day == Day.Sunday) {
+    print("It's a holiday!");
+  } else {
+    print("It's a working day.");
+  }
+}
+
+// Exception Handling Function
+int divide(int a, int b) {
+  if (b == 0) {
+    throw Exception("Cannot divide by zero!");
+  }
+  return a ~/ b; // Integer division
+}
+
